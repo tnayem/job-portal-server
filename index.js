@@ -41,7 +41,13 @@ async function run() {
       const result = await jobsCollection.findOne(cursor)
       res.send(result)
     })
-    // Application 
+    // Job Post method
+    app.post('/jobs', async(req,res)=>{
+      const jobData= req.body;
+      const result = await jobsCollection.insertOne(jobData)
+      res.send(result)
+    })
+    // Application  post method
     app.post('/application', async(req,res)=>{
       const application = req.body; 
       const result = await applicationCollection.insertOne(application)
